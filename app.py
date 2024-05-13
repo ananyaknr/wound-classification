@@ -5,8 +5,8 @@ from PIL import Image
 
 st.title('Wound Classification')
 
-temp = pathlib.PosixPath   
-pathlib.PosixPath = pathlib.WindowsPath
+# temp = pathlib.PosixPath   
+# pathlib.PosixPath = pathlib.WindowsPath
 
 learn_inf = load_learner('upsampled-ENS-model.pkl')
 
