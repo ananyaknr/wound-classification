@@ -1,18 +1,25 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
+import pathlib
+from fastbook import *
+from PIL import Image
 
-df = pd.DataFrame({
-'first column': [1, 2, 3, 4],
-'second column': [10, 20, 30, 40]
-})
-st.write("Here's our first table:")
-st.write(df)
+st.title('Wound Classification')
 
-chart_data = pd.DataFrame(np.random.randn(20, 3), columns=['a', 'b', 'c'])
-st.line_chart(chart_data)
+temp = pathlib.PosixPath   
+pathlib.PosixPath = pathlib.WindowsPath
 
-map_data = pd.DataFrame(
- np.random.randn(1000, 2) / [50, 50] + [13.76514, 100.53829],
- columns=['lat', 'lon'])
-st.map(map_data)
+learn_inf = load_learner('upsampled-ENS-model.pkl')
+
+def load_image(image_file):
+    img = Image.open(image_file)
+    return img
+
+image_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+
+if image_file is not None:
+    image = load_image(image_file)
+    st.image(image, caption="Uploaded Image")
+    pred_class, class_num, prob = learn_inf.predict(image)
+    st.write("Prediction:", pred_class)
+else:
+    st.write("No image uploaded.")
