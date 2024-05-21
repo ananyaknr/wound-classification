@@ -53,10 +53,9 @@ if image_file is not None:
     image = load_image(image_file)
     st.image(image, caption="Chosen Image")
     pred_class, class_num, prob = learn_inf.predict(image)
-
+    pred_prob = float(max(prob))*100
     display_pred_class = display_name_map.get(pred_class, pred_class)    
-    st.write("Prediction:",  display_pred_class)
-    # st.write(str(float(max(prob))))
+    st.write("Prediction: " + "{:.2f}".format(pred_prob) +"% "+display_pred_class)
 
     class_description = dscrp_map.get(pred_class, pred_class)    
     st.write("Description:", class_description)
