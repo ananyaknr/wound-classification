@@ -33,7 +33,7 @@ def load_image(image_file):
 
 # sample image selection
 sample_folder = 'sample_images'
-image_fnames = [f for f in os.listdir(sample_folder) if f.endswith((".jpg", ".jpeg", ".png"))]
+image_fnames = [f for f in os.listdir(sample_folder) if f.endswith((".jpg", ".jpeg", ".png",".webp"))]
 selected_file = st.selectbox("Select a sample image (optional)", [""] + image_fnames)
 
 # upload your own image 
