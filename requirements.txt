@@ -1,1 +1,2 @@
 fastbook==0.0.29
+streamlit==1.10.0
