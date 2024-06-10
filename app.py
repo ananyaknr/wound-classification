@@ -3,8 +3,8 @@ import pathlib
 from fastbook import *
 from PIL import Image
 
-# temp = pathlib.PosixPath   
-# pathlib.PosixPath = pathlib.WindowsPath
+temp = pathlib.PosixPath   
+pathlib.PosixPath = pathlib.WindowsPath
 
 display_name_map = {"abrasion wound": "Abrasion",
                     "bruises wound": "Bruise/Contusion",
@@ -33,14 +33,14 @@ dscrp_map2 = {"abrasion wound": "Scraped away superficial layers of the epidermi
 st.title('Wound Classification')
 st.write("This app uses a machine learning model to help classify wound images.")
 
-learn_inf = load_learner(' wound-classification\wound classifier.pkl')
+learn_inf = load_learner('wound-classification\wound classifier.pkl')
 
 def load_image(image_file):
     img = Image.open(image_file)
     return img
 
 # sample image selection
-sample_folder = 'sample_images'
+sample_folder = 'wound-classification\sample_images'
 image_fnames = [f for f in os.listdir(sample_folder) if f.endswith((".jpg", ".jpeg", ".png",".webp"))]
 selected_file = st.selectbox("Select a sample image (optional)", [""] + image_fnames)
 
