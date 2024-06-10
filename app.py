@@ -33,7 +33,7 @@ dscrp_map2 = {"abrasion wound": "Scraped away superficial layers of the epidermi
 st.title('Wound Classification')
 st.write("This app uses a machine learning model to help classify wound images.")
 
-learn_inf = load_learner('wound classifier.pkl')
+learn_inf = load_learner(' wound-classification\wound classifier.pkl')
 
 def load_image(image_file):
     img = Image.open(image_file)
