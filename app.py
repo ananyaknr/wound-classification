@@ -14,18 +14,26 @@ display_name_map = {"abrasion wound": "Abrasion",
                     "Stab_wound": "Stab wound",
                     }
 
-dscrp_map = {"abrasion wound": "(Description for abrasion class)",
-            "bruises wound": "(Description for bruises class)",
-            "burn wound": "(Description for burn class)",
-            "cut wound": "(Description for cut class)",
-            "laceration wound": "(Description for laceration class)",
-            "Stab_wound": "(Description for stab class)",
+dscrp_map1 = {"abrasion wound": "Rough surfaces, fingernail scratches, bite marks",
+            "bruises wound": "Hand(slap mark/grab mark), belts, bats, other blunt objects",
+            "burn wound": "Heat source (thermal, chemical, electrical contact)",
+            "cut wound": "Sharp object (knife, scalpel, glass)",
+            "laceration wound": "Object with a rough edge (pipe wrench, bricks)",
+            "Stab_wound": "Sharp and pointed object (knife, screwdriver, ice pick)",
+            }
+
+dscrp_map2 = {"abrasion wound": "Scraped away superficial layers of the epidermis, usually shallow, may bleed slightly.",
+            "bruises wound": "Damaged blood vessels below skin causing discoloration (red, blue, purple), swelling, pain, no broken skin.",
+            "burn wound": "Damaged or destroyed skin layers, varies in depth based on how deep the skin damage is.",
+            "cut wound": "Clean, straight-edged wound, minimal no tissue bridging.",
+            "laceration wound": "Tear produced by blunt force trauma with abraded or crushed skin edges, and incomplete separation of stronger tissue elements. Blood vessels and nerves can be exposed.",
+            "Stab_wound": "Deep, usually deeper than their cutaneous length, narrow puncture wound, possible internal bleeding depending on depth and location.",
             }
 
 st.title('Wound Classification')
 st.write("This app uses a machine learning model to help classify wound images.")
 
-learn_inf = load_learner('upsampled-ENS-model.pkl')
+learn_inf = load_learner('wound classifier.pkl')
 
 def load_image(image_file):
     img = Image.open(image_file)
@@ -57,7 +65,12 @@ if image_file is not None:
     display_pred_class = display_name_map.get(pred_class, pred_class)    
     st.write("Prediction: " + "{:.2f}".format(pred_prob) +"% "+display_pred_class)
 
-    class_description = dscrp_map.get(pred_class, pred_class)    
-    st.write("Description:", class_description)
+    class_weapon = dscrp_map1.get(pred_class, pred_class)    
+    st.write("Possible weapons:", class_weapon)
+
+    class_char = dscrp_map2.get(pred_class, pred_class)    
+    st.write("Characteristics:", class_char)
+
+    st.write("Note: Characteristics can vary depending on the severity of the wound and the specific weapon used.")
 else:
     st.write("No image chosen. Please select or upload a wound image for classification.")
