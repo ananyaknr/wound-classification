@@ -9,5 +9,6 @@ pip install -r requirements.txt
 ```
 streamlit run app.py
 ```
+or directly try it from [here](https://wound-classification-h6ypwussjonwuwcjsgcrrh.streamlit.app/)
 ## Blog
 [Medium blog](https://medium.com/@jaimai2006/wound-classification-3d89dee6d402)
