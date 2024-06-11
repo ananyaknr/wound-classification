@@ -7,7 +7,7 @@ pip install -r wound-classification\requirements.txt
 
 ## Deployment
 ```
-streamlit run wound-classification\app.py
+streamlit run wound-classification\deploy.py
 ```
 or directly try it from [here](https://wound-classification-h6ypwussjonwuwcjsgcrrh.streamlit.app/)
 ## Blog
