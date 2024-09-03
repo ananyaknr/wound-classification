@@ -2,12 +2,12 @@
 This project uses a machine learning model to help classify wound images associated with domestic violence.
 ## Installation
 ```
-pip install -r wound-classification\requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Deployment
 ```
-streamlit run wound-classification\deploy.py
+streamlit run deploy.py
 ```
 or directly try it from [here](https://wound-classification-h6ypwussjonwuwcjsgcrrh.streamlit.app/)
 ## Blog
